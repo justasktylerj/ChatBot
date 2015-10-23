@@ -1,6 +1,7 @@
 package chat.controller;
 
 import chat.view.ChatView;
+import chat.model.ChatBot;
 
 /**
  * 
@@ -9,10 +10,18 @@ import chat.view.ChatView;
  */
 public class ChatController 
 {
-	private ChatView myDisplay;
+	private ChatView display;
+	private ChatBot myBot;
+	
+	public ChatController()
+	{
+		display = new ChatView(); 
+		String userName = display.collectUserText("What is our name?");
+		myBot = new ChatBot(userName);
+	}
 	
 	public void start()
 	{
-		
+		display.displayText("Hello" + myBot.getUserName());
 	}
 }
