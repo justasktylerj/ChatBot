@@ -22,6 +22,6 @@ public class ChatController
 	
 	public void start()
 	{
-		display.displayText("Hello" + myBot.getUserName());
+		display.displayText("Hello " + myBot.getUserName());
 	}
 }
