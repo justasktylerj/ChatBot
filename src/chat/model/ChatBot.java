@@ -21,12 +21,27 @@ public class ChatBot
 		 */
 		public ChatBot(String userName)
 		{
+			this.memesList = new ArrayList<String>();
+			this.politicalTopicList = new ArrayList<String>();
 			this.userName = userName;
+			this.content = "Motivation sign!";
 		}
 		
 		private void buildMemesList()
 		{
+			this.memesList.add("cute animals");
+			this.memesList.add("doge");
+			this.memesList.add("aliens");
+			this.memesList.add("spoderman");
+			this.memesList.add("me gusta");
+			this.memesList.add("troll");
+			this.memesList.add("bad luck brain");
+			this.memesList.add("unhelpful high school teacher");
+			this.memesList.add("what if I told you");
+			this.memesList.add("aliens");
 			
+			buildMemesList();
+			buildPoliticalTopicsList();
 		}
 		
 		private void buildPoliticalTopicsList()
@@ -44,14 +59,6 @@ public class ChatBot
 		{
 			boolean hasLength = false;
 			
-			if(currentInput != null)
-			{
-				if(currentInput.length() >= 1)
-				{
-					hasLength = true;
-				}
-			}
-			
 			if(currentInput != null && currentInput.length() > 0)
 			{
 				hasLength = true;
@@ -66,7 +73,14 @@ public class ChatBot
 		 */
 		public boolean contentChecker(String currentInput)
 		{
-			return false;
+			boolean hasContent = false;
+			
+			if(currentInput.toLowerCase().contains(content.toLowerCase()))
+			{
+				hasContent = true;
+			}
+			
+			return hasContent;
 		}
 		
 		/**
