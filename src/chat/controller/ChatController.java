@@ -16,7 +16,7 @@ public class ChatController
 	public ChatController()
 	{
 		display = new ChatView(); 
-		String userName = display.collectUserText("What is our name?");
+		String userName = display.collectUserText("What is your name?");
 		myBot = new ChatBot(userName);
 	}
 	

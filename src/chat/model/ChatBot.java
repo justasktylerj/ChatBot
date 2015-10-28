@@ -120,7 +120,7 @@ public class ChatBot
 		 */
 		public String getContent()
 		{
-			return null;
+			return content;
 		}
 		
 		/**
@@ -129,7 +129,7 @@ public class ChatBot
 		 */
 		public ArrayList<String> getMemesList()
 		{
-			return null;
+			return memesList;
 		}
 		
 		/**

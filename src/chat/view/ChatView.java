@@ -14,7 +14,7 @@ public class ChatView
 	{
 		String returnedText = "";
 		
-		returnedText = JOptionPane.showInputDialog(null, returnedText);
+		returnedText = JOptionPane.showInputDialog(null, displayText);
 		 
 		return returnedText;
 	}
