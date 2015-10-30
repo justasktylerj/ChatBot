@@ -50,7 +50,19 @@ public class ChatBot
 		
 		private void buildPoliticalTopicsList()
 		{
-			
+			this.politicalTopicList.add("republican");
+			this.politicalTopicList.add("democrat");
+			this.politicalTopicList.add("trump");
+			this.politicalTopicList.add("clinton");
+			this.politicalTopicList.add("election");
+			this.politicalTopicList.add("liberal");
+			this.politicalTopicList.add("conservative");
+			this.politicalTopicList.add("carson");
+			this.politicalTopicList.add("election");
+			this.politicalTopicList.add("Biden");
+			this.politicalTopicList.add("fiorina");
+			this.politicalTopicList.add("sanders");
+			this.politicalTopicList.add("vote");
 		}
 		
 		/**

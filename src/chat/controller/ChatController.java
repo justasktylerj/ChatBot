@@ -39,7 +39,10 @@ public class ChatController
 		    { 
 			     display.displayText("what a lame meme...");	
 		    }
-			
+			else if(myBot.politicalTopicChecker(conversation))
+			{
+				display.displayText("I hate politics...");
+			}
 			conversation = display.collectUserText(conversation);
 		}
 	}
