@@ -24,7 +24,7 @@ public class ChatBot
 			this.memesList = new ArrayList<String>();
 			this.politicalTopicList = new ArrayList<String>();
 			this.userName = userName;
-			this.content = "Motivation sign!";
+			this.content = "memes";
 		}
 		
 		private void buildMemesList()
@@ -102,13 +102,24 @@ public class ChatBot
 		 */
 		public boolean memeChecker(String currentInput)
 		{
-			return false;
+			boolean hasMeme = false;
+			for(String meme : memesList)
+			{
+				if(currentInput.toLowerCase().contains(meme.toLowerCase()))
+				{
+					hasMeme = true;
+				}
+			}		
+			
+			return hasMeme;
 		}
 		
-		/**
-		 * Returns the username of this Chatbot instance.
-		 * @return The username of the Chatbot.
-		 */
+		public boolean quitChecker(String currentInput)
+		{
+			boolean okToQuit = false;
+		}
+		
+		
 		public String getUserName()
 		{
 			return userName;

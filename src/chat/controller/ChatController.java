@@ -24,8 +24,6 @@ public class ChatController
 	{
 		display.displayText("Hello " + myBot.getUserName());
 		chat();
-		
-		
 	}
 
 	private void chat()
@@ -35,11 +33,14 @@ public class ChatController
 		{
 			if(myBot.contentChecker(conversation))
 			{
-				{
-	               display.displayText("wow i had no idea you were interestes in");
-		        }
-			    conversation = display.collectUserText(conversation);
-			}
+	               display.displayText("wow i had no idea you were interested in " + myBot.getContent());
+		    }
+			else if(myBot.memeChecker(conversation))
+		    { 
+			     display.displayText("what a lame meme");	
+		    }
+			
+			conversation = display.collectUserText(conversation);
 		}
 	}
 	
