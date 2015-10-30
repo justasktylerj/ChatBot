@@ -5,7 +5,9 @@ import java.util.ArrayList;
 /**
  * Base version of the 2015 Chatbot class. Only stub methods are provided. Students will complete methods as part
  * of the project.
+ * 
  * @author Tyler Jarrard
+ *
  * @version 1.2 10/23/15 completed the lengthChecker method. fixed the constructor and getter for userName
  */
 public class ChatBot 
@@ -16,7 +18,9 @@ public class ChatBot
 		private String content;
 		
 		/**
+		 * 
 		 * Creates an instance of the Chatbot with the supplied username.
+		 * 
 		 * @param userName The username for the chatbot.
 		 */
 		public ChatBot(String userName)
@@ -25,6 +29,9 @@ public class ChatBot
 			this.politicalTopicList = new ArrayList<String>();
 			this.userName = userName;
 			this.content = "memes";
+			
+			buildMemesList();
+			buildPoliticalTopicsList();
 		}
 		
 		private void buildMemesList()
@@ -39,9 +46,6 @@ public class ChatBot
 			this.memesList.add("unhelpful high school teacher");
 			this.memesList.add("what if I told you");
 			this.memesList.add("aliens");
-			
-			buildMemesList();
-			buildPoliticalTopicsList();
 		}
 		
 		private void buildPoliticalTopicsList()
@@ -51,7 +55,8 @@ public class ChatBot
 		
 		/**
 		 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
-		 * otherwise returns true. 
+		 * 
+		 *otherwise returns true. 
 		 * @param currentInput
 		 * @return A true or false based on the length of the supplied String.
 		 */
@@ -59,14 +64,28 @@ public class ChatBot
 		{
 			boolean hasLength = false;
 			
+			if(currentInput != null)
+			{
+				if(currentInput.length() != 1)
+				{
+					hasLength = true;
+				}
+			}
+			
+			 //  
+			
 			if(currentInput != null && currentInput.length() > 0)
 			{
 				hasLength = true;
 			}
+			
 			return hasLength;
 		}
 		
 		/**
+		 * 
+		 * 
+		 * 
 		 * Checks if the supplied String matches the content area for this Chatbot instance.
 		 * @param currentInput The supplied String to be checked.
 		 * @return Whether it matches the content area.
@@ -87,6 +106,10 @@ public class ChatBot
 		 * Checks if supplied String matches ANY of the topics in the politicalTopicsList. Returns
 		 * true if it does find a match and false if it does not match.
 		 * @param currentInput The supplied String to be checked.
+		 * 
+		 * 
+		 * 
+		 * 
 		 * @return Whether the String is contained in the ArrayList.
 		 */
 		public boolean politicalTopicChecker(String currentInput)
@@ -94,15 +117,18 @@ public class ChatBot
 			return false;
 		}
 		
-		
 		/**
 		 * Checks to see that the supplied String value is in the current memesList variable.
 		 * @param currentInput The supplied String to be checked.
+		 * 
+		 * 
+		 * 
 		 * @return Whether the supplied String is a recognized meme.
 		 */
 		public boolean memeChecker(String currentInput)
 		{
 			boolean hasMeme = false;
+			
 			for(String meme : memesList)
 			{
 				if(currentInput.toLowerCase().contains(meme.toLowerCase()))
@@ -114,18 +140,18 @@ public class ChatBot
 			return hasMeme;
 		}
 		
-		public boolean quitChecker(String currentInput)
-		{
-			boolean okToQuit = false;
-		}
-		
-		
+		/**
+		 * gsfs
+		 * 
+		 * @return
+		 */
 		public String getUserName()
 		{
 			return userName;
 		}
 		
 		/**
+		 * 
 		 * Returns the content area for this Chatbot instance.
 		 * @return The content area for this Chatbot instance.
 		 */
@@ -135,6 +161,7 @@ public class ChatBot
 		}
 		
 		/**
+		 *
 		 * Getter method for the memesList object.
 		 * @return The reference to the meme list.
 		 */
@@ -146,6 +173,7 @@ public class ChatBot
 		/**
 		 * Getter method for the politicalTopicList object.
 		 * @return The reference to the political topic list.
+		 *
 		 */
 		public ArrayList<String> getPoliticalTopicList()
 		{
@@ -154,6 +182,8 @@ public class ChatBot
 		
 		/**
 		 * Updates the content area for this Chatbot instance.
+		 *
+		 * 
 		 * @param content The updated value for the content area.
 		 */
 		public void setContent(String content)
@@ -161,5 +191,3 @@ public class ChatBot
 			
 		}
 }
-
-

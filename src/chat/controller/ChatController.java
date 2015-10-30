@@ -37,7 +37,7 @@ public class ChatController
 		    }
 			else if(myBot.memeChecker(conversation))
 		    { 
-			     display.displayText("what a lame meme");	
+			     display.displayText("what a lame meme...");	
 		    }
 			
 			conversation = display.collectUserText(conversation);
