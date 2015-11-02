@@ -35,14 +35,15 @@ public class ChatController
 			{
 	               display.displayText("wow i had no idea you were interested in " + myBot.getContent());
 		    }
-			else if(myBot.memeChecker(conversation))
-		    { 
-			     display.displayText("what a lame meme...");	
-		    }
 			else if(myBot.politicalTopicChecker(conversation))
 			{
 				display.displayText("I hate politics...");
 			}
+			else if(myBot.memeChecker(conversation))
+		    { 
+			     display.displayText("what a lame meme...");	
+		    }
+			
 			conversation = display.collectUserText(conversation);
 		}
 	}

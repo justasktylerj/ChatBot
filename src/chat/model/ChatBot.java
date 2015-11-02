@@ -126,7 +126,17 @@ public class ChatBot
 		 */
 		public boolean politicalTopicChecker(String currentInput)
 		{
-			return false;
+            boolean hasPoliticalTopic = false;
+			
+			for(String politicalTopic : politicalTopicList)
+			{
+				if(currentInput.toLowerCase().contains(politicalTopic.toLowerCase()))
+				{
+					hasPoliticalTopic = true;
+				}
+			}		
+			
+			return hasPoliticalTopic;
 		}
 		
 		/**
@@ -189,7 +199,7 @@ public class ChatBot
 		 */
 		public ArrayList<String> getPoliticalTopicList()
 		{
-			return null;
+			return politicalTopicList;
 		}
 		
 		/**
