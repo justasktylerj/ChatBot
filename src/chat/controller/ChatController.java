@@ -25,7 +25,7 @@ public class ChatController
 		display.displayText("Hello " + myBot.getUserName());
 		chat();
 	}
-
+//how?
 	private void chat()
 	{
 		String conversation = display.collectUserText("what would you like to talk about today");
