@@ -162,6 +162,51 @@ public class ChatBot
 			return hasMeme;
 		}
 		
+		public String processConversation(String currentInput)
+		{
+			String nextConversation = "oh, what else would you like to talk about?";
+			int randomTopic =  (int) (Math.random() * 5); //Generates random number between 0-4
+			
+			switch (randomTopic) //a way of choosing different options
+			{
+			    case 0:
+			    	if(memeChecker(currentInput))
+			    	{
+			    		nextConversation = "that is a very popular meme this year. what else are you" + " wanting to talk about?";
+			    	}
+				    break;
+			    case 1:
+			    	if(politicalTopicChecker(currentInput))
+			    	{
+			    		nextConversation = "some words and a question";
+			    	}
+			    	else
+			    	{   
+			    		nextConversation = "failed the political topic checker";
+			    	}
+			    	break;
+			    case 2:
+			    	if(contentChecker(currentInput))
+			    	{
+			    		nextConversation = "some words and a question";
+			    	}
+			        break;
+			    case 3:
+			    	if(currentInput.length() > 20)
+			    	{
+			    		nextConversation = "some words and a question";
+			    	}
+		            break;
+			    case 4:
+			    	nextConversation = "some random words and a random question";
+		            break;
+		        default:
+		        	nextConversation = "Stormageddon has come... prepare to be astonished!";
+		        	break;
+			 }
+					
+			return nextConversation;
+		}
 		/**
 		 * gsfs
 		 * 
@@ -174,8 +219,8 @@ public class ChatBot
 		
 		/**
 		 * 
-		 * Returns the content area for this Chatbot instance.
-		 * @return The content area for this Chatbot instance.
+		 * Returns the content area for this Chat bot instance.
+		 * @return The content area for this Chat bot instance.
 		 */
 		public String getContent()
 		{

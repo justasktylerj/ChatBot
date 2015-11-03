@@ -31,25 +31,14 @@ public class ChatController
 		String conversation = display.collectUserText("what would you like to talk about today");
 		while(myBot.lengthChecker(conversation))
 		{
-			if(myBot.contentChecker(conversation))
-			{
-	               display.displayText("wow i had no idea you were interested in " + myBot.getContent());
-		    }
-			else if(myBot.politicalTopicChecker(conversation))
-			{
-				display.displayText("I hate politics...");
-			}
-			else if(myBot.memeChecker(conversation))
-		    { 
-			     display.displayText("what a lame meme...");	
-		    }
-			
+			conversation = myBot.processConversation(conversation);
 			conversation = display.collectUserText(conversation);
 		}
 	}
 	
 	private void ShutDown()
 	{
+		//display.displayText("Goodbye " + myBot.getUserName)
 		
 	}
 
