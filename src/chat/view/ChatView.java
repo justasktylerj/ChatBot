@@ -3,6 +3,13 @@ package chat.view;
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
+/**
+ * 
+ * @author tjar2074
+ * V: 3.0
+ * 11/5/15
+ */
+
 public class ChatView 
 {
 	
@@ -21,11 +28,11 @@ public class ChatView
 
 	public String collectUserText(String displayText)
 	{
-		String returnedText = "";
+		String userInput = "";
 		
-		returnedText = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here :)").toString();
+		userInput = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here :)").toString();
 		 
-		return returnedText;
+		return userInput;
 	}
 	
 
