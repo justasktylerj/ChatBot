@@ -17,12 +17,13 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		
 		baseLayout = new SpringLayout();
-//		firstButton = new JButton("Please do not click the button");
-//		firstTextField = new JTextField("words can be type here");
+		firstButton = new JButton("Please do not click the button");
+		firstTextField = new JTextField("words can be type here");
 		
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	}	
 		
 		private void setupPanel()
 		{
@@ -31,4 +32,22 @@ public class ChatPanel extends JPanel
 			this.setBackground(Color.MAGENTA);
 			this.add(firstTextField);
 		}
+		
+		private void setupLayout()
+		{
+			
+		}
+		
+		private void setupListeners()
+		{
+			firstButton.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					firstTextField.setText("Much Wow, this is the most amazing click event ever! WOW");
+				}
+			});
+		}
+		
 }
+	

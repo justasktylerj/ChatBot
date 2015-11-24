@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import chat.model.Chatbot;
+import chat.model.ChatBot;
 
 /**
  * Class designed for testing the Chatbot object with JUnit. 
@@ -16,14 +16,14 @@ import chat.model.Chatbot;
  */
 public class ChatbotTest
 {
-	private Chatbot simpleBot;
+	private ChatBot simpleBot;
 	private String userName;
 
 	@Before
 	public void setUp() throws Exception
 	{
 		userName = "test";
-		simpleBot = new Chatot(userName);
+		simpleBot = new ChatBot(userName);
 	}
 
 	@After
