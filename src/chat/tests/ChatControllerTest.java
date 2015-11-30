@@ -5,8 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import chat.model.ChatBot;
 import chat.controller.ChatController;
-import chat.view.*;;
+import chat.view.ChatView;
+import chat.view.ChatFrame;
 
 
 public class ChatControllerTest

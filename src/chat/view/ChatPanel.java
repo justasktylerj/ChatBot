@@ -11,6 +11,10 @@ public class ChatPanel extends JPanel
 	private JButton firstButton;
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
+	private JButton submitButton;
+	private JTextField typingField;
+	private JLabel promptLabel;
+	private JTextArea chatArea;
 	
 	public ChatPanel(ChatController baseController)
 	{
@@ -25,29 +29,39 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	}	
 		
-		private void setupPanel()
+	private void setupLayout()
+	{
+		
+	}
+	
+	private void setupPanel()
 		{
 			this.setLayout(baseLayout);
-			this.add(firstButton);
 			this.setBackground(Color.MAGENTA);
 			this.add(firstTextField);
-		}
-		
-		private void setupLayout()
-		{
+			this.add(chatArea);
+			this.add(submitButton);
+			this.add(promptLabel);
+			typingField.setToolTipText("type here for the chatbot");
+			chatArea.setEnabled(false);
 			
 		}
 		
-		private void setupListeners()
+	private void setupListeners()
+	{
+		firstButton.addActionListener(new ActionListener()
 		{
-			firstButton.addActionListener(new ActionListener()
+			public void actionPerformed(ActionEvent click)
 			{
-				public void actionPerformed(ActionEvent click)
-				{
 					firstTextField.setText("Much Wow, this is the most amazing click event ever! WOW");
-				}
-			});
-		}
+			}
+		});
+	}
 		
+	public JTextField getTextField()
+	{
+		return typingField;
+	}
+	
 }
 	

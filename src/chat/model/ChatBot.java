@@ -114,16 +114,28 @@ public class ChatBot
 			return hasContent;
 		}
 		
-		/**
-		 * Checks if supplied String matches ANY of the topics in the politicalTopicsList. Returns
-		 * true if it does find a match and false if it does not match.
-		 * @param currentInput The supplied String to be checked.
-		 * 
-		 * 
-		 * 
-		 * 
-		 * @return Whether the String is contained in the ArrayList.
-		 */
+		public boolean keyboardMashChecker(String currentInput)
+		{
+			boolean hasMash = false;
+			
+			if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cub") || currentInput.equals(",./"))
+			{
+				hasMash = true;
+			}
+			return hasMash;
+		}
+		
+		public boolean quitChecker(String currentInput)
+		{
+			boolean hasQuit = false;
+			
+			if(currentInput.equals("quit"))
+		
+			{
+				hasQuit = true;
+			}
+			return hasQuit;
+		}
 		public boolean politicalTopicChecker(String currentInput)
 		{
             boolean hasPoliticalTopic = false;

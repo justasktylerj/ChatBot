@@ -12,6 +12,7 @@ public class ChatFrame extends JFrame
 	{
 		this.baseController = baseController;
 		basePanel = new ChatPanel(baseController);
+		
 		setupFrame();
 	}
 	
@@ -19,7 +20,7 @@ public class ChatFrame extends JFrame
 	{
 		this.setContentPane(basePanel);  //installs the panel in the frame
 		this.setSize(400,400);
-		this.setTitle("Chat app!"); // find a good size for app
+		this.setTitle("ChatBot app!"); // find a good size for app
 		this.setResizable(false); //can't change size of window
 		this.setVisible(true);  //must be last line of setupFrame
 	}
