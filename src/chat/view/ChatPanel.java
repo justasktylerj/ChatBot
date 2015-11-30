@@ -23,7 +23,10 @@ public class ChatPanel extends JPanel
 		baseLayout = new SpringLayout();
 		firstButton = new JButton("Please do not click the button");
 		firstTextField = new JTextField("words can be type here");
-		
+		chatArea = new JTextArea();
+		submitButton = new JButton();
+		promptLabel = new JLabel();
+		typingField = new JTextField();
 		setupPanel();
 		setupLayout();
 		setupListeners();
