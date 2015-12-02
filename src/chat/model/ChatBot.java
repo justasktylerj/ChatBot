@@ -190,7 +190,7 @@ public class ChatBot
 			    case 1:
 			    	if(politicalTopicChecker(currentInput))
 			    	{
-			    		nextConversation = "some words and a question";
+			    		nextConversation = "I hate politics";
 			    	}
 			    	else
 			    	{   
@@ -200,17 +200,17 @@ public class ChatBot
 			    case 2:
 			    	if(contentChecker(currentInput))
 			    	{
-			    		nextConversation = "some words and a question";
+			    		nextConversation = "I am also interested in " + content;
 			    	}
 			        break;
 			    case 3:
 			    	if(currentInput.length() > 20)
 			    	{
-			    		nextConversation = "some words and a question";
+			    		nextConversation = "Too many words! Slow down!";
 			    	}
 		            break;
 			    case 4:
-			    	nextConversation = "some random words and a random question";
+			    	nextConversation = "What do you want to talk about?";
 		            break;
 		        default:
 		        	nextConversation = "Stormageddon has come... prepare to be astonished!";

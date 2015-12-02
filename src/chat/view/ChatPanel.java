@@ -22,11 +22,12 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		
 		baseLayout = new SpringLayout();
-		submitButton = new JButton("Please do not click the button");
-		firstTextField = new JTextField("words can be type here");
-		chatArea = new JTextArea();
-		promptLabel = new JLabel();
-		typingField = new JTextField();
+		submitButton = new JButton("click the button");
+		firstTextField = new JTextField("words can be type here", 20);
+		chatArea = new JTextArea(10,30);
+		promptLabel = new JLabel("Chat with me");
+		typingField = new JTextField("asda");
+		
 		setupPanel();
 		setupLayout();
 		setupListeners();
@@ -52,6 +53,7 @@ public class ChatPanel extends JPanel
 			typingField.setToolTipText("Type here for the chatbot");
 			chatArea.setEnabled(false);
 			
+			
 		}
 		
 	private void setupListeners()
@@ -60,9 +62,9 @@ public class ChatPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				String userText = typingField.getText(); //grab user typed answer
+				String userText = firstTextField.getText(); //grab user typed answer
 				chatArea.append("\nUser: " + userText); //display info
-				typingField.setText(""); //send text to chatBot
+				firstTextField.setText(""); //send text to chatBot
 				String response = baseController.userToChatBot(userText); //chat will process
 				chatArea.append("\nChatBot: " + response); //display the response
 			}

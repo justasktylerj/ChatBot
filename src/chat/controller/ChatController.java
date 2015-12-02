@@ -54,7 +54,7 @@ public class ChatController
 	}
 	private void shutDown()
 	{
-		display.displayText("Goodbye " + myBot.getUserName() + "I'm sorry Dave, i'm afriad I can't do that ");
+		display.displayText("I'm sorry " + myBot.getUserName() + ", I'm afriad I can't do that ");
 		System.exit(0);
 	}
 
