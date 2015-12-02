@@ -14,6 +14,7 @@ public class ChatBot
 {
 		private ArrayList<String> memesList;
 		private ArrayList<String> politicalTopicList;
+		private ArrayList<String> secretList;
 		private String userName;
 		private String content;
 		
@@ -27,11 +28,13 @@ public class ChatBot
 		{
 			this.memesList = new ArrayList<String>();
 			this.politicalTopicList = new ArrayList<String>();
+			this.secretList = new ArrayList<String>();
 			this.userName = userName;
 			this.content = "memes";
 			
 			buildMemesList();
 			buildPoliticalTopicsList();
+			buildSecretList();
 		}
 		
 		private void buildMemesList()
@@ -50,8 +53,8 @@ public class ChatBot
 		
 		private void buildPoliticalTopicsList()
 		{
-			this.politicalTopicList.add("republican");
-			this.politicalTopicList.add("democrat");
+			this.politicalTopicList.add("Republican");
+			this.politicalTopicList.add("Democrat");
 			this.politicalTopicList.add("trump");
 			this.politicalTopicList.add("clinton");
 			this.politicalTopicList.add("election");
@@ -63,8 +66,16 @@ public class ChatBot
 			this.politicalTopicList.add("fiorina");
 			this.politicalTopicList.add("sanders");
 			this.politicalTopicList.add("vote");
+			this.politicalTopicList.add("11/4/16");
 		}
 		
+		private void buildSecretList()
+		{
+			this.secretList.add("potato");
+			this.secretList.add("missile");
+			this.secretList.add("magic");
+			this.secretList.add("cheese");
+		}
 		/**
 		 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
 		 * 
@@ -75,16 +86,6 @@ public class ChatBot
 		public boolean lengthChecker(String currentInput)
 		{
 			boolean hasLength = false;
-			
-			if(currentInput != null)
-			{
-				if(currentInput.length() != 1)
-				{
-					hasLength = true;
-				}
-			}
-			
-			 //  
 			
 			if(currentInput != null && currentInput.length() > 0)
 			{
@@ -114,16 +115,28 @@ public class ChatBot
 			return hasContent;
 		}
 		
-		/**
-		 * Checks if supplied String matches ANY of the topics in the politicalTopicsList. Returns
-		 * true if it does find a match and false if it does not match.
-		 * @param currentInput The supplied String to be checked.
-		 * 
-		 * 
-		 * 
-		 * 
-		 * @return Whether the String is contained in the ArrayList.
-		 */
+		public boolean keyboardMashChecker(String currentInput)
+		{
+			boolean hasMash = false;
+			
+			if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
+			{
+				hasMash = true;
+			}
+			return hasMash;
+		}
+		
+		public boolean quitChecker(String currentInput)
+		{
+			boolean hasQuit = false;
+			
+			if(currentInput.equals("quit"))
+		
+			{
+				hasQuit = true;
+			}
+			return hasQuit;
+		}
 		public boolean politicalTopicChecker(String currentInput)
 		{
             boolean hasPoliticalTopic = false;
@@ -137,6 +150,21 @@ public class ChatBot
 			}		
 			
 			return hasPoliticalTopic;
+		}
+		
+		public boolean secretChecker(String currentInput)
+		{
+            boolean hasSecret = false;
+			
+			for(String secret : secretList)
+			{
+				if(currentInput.toLowerCase().contains(secret.toLowerCase()))
+				{
+					hasSecret = true;
+				}
+			}		
+			
+			return hasSecret;
 		}
 		
 		/**
@@ -165,41 +193,48 @@ public class ChatBot
 		public String processConversation(String currentInput)
 		{
 			String nextConversation = "oh, what else would you like to talk about?";
-			int randomTopic = (int) (Math.random() * 5); //Generates random number between 0-4
+			int randomTopic = (int) (Math.random() * 6); //Generates random number between 0-5
+			
+			if(keyboardMashChecker(currentInput))
+			{
+				return "stop mashing";
+			}
 			
 			switch (randomTopic) //a way of choosing different options
 			{
 			    case 0:
 			    	if(memeChecker(currentInput))
 			    	{
-			    		nextConversation = "that is a very popular meme this year. what else are you" + " wanting to talk about?";
+			    		nextConversation = "that is a very popular meme this year.";
 			    	}
 				    break;
 			    case 1:
 			    	if(politicalTopicChecker(currentInput))
 			    	{
-			    		nextConversation = "some words and a question";
-			    	}
-			    	else
-			    	{   
-			    		nextConversation = "failed the political topic checker";
+			    		nextConversation = "I hate politics";
 			    	}
 			    	break;
 			    case 2:
 			    	if(contentChecker(currentInput))
 			    	{
-			    		nextConversation = "some words and a question";
+			    		nextConversation = "I am also interested in " + content;
 			    	}
 			        break;
 			    case 3:
 			    	if(currentInput.length() > 20)
 			    	{
-			    		nextConversation = "some words and a question";
+			    		nextConversation = "Too many words! Slow down!";
 			    	}
 		            break;
 			    case 4:
-			    	nextConversation = "some random words and a random question";
-		            break;
+			    	if(secretChecker(currentInput))
+			    	{
+			    		nextConversation = "Your Missiles hit the orc, roll 1d4+1 force damage";
+			    	}
+			    	break;
+			    case 5:
+			    	nextConversation = "What do you want to talk about?";
+			    	break;
 		        default:
 		        	nextConversation = "Stormageddon has come... prepare to be astonished!";
 		        	break;
@@ -237,6 +272,10 @@ public class ChatBot
 			return memesList;
 		}
 		
+		public ArrayList<String> getSecretList()
+		{
+			return secretList;
+		}
 		/**
 		 * Getter method for the politicalTopicList object.
 		 * @return The reference to the political topic list.
@@ -255,6 +294,6 @@ public class ChatBot
 		 */
 		public void setContent(String content)
 		{
-			
+			this.content = content;
 		}
 }
