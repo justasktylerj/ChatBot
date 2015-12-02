@@ -14,6 +14,7 @@ public class ChatBot
 {
 		private ArrayList<String> memesList;
 		private ArrayList<String> politicalTopicList;
+		private ArrayList<String> secretList;
 		private String userName;
 		private String content;
 		
@@ -27,11 +28,13 @@ public class ChatBot
 		{
 			this.memesList = new ArrayList<String>();
 			this.politicalTopicList = new ArrayList<String>();
+			this.secretList = new ArrayList<String>();
 			this.userName = userName;
 			this.content = "memes";
 			
 			buildMemesList();
 			buildPoliticalTopicsList();
+			buildSecretList();
 		}
 		
 		private void buildMemesList()
@@ -65,6 +68,13 @@ public class ChatBot
 			this.politicalTopicList.add("vote");
 		}
 		
+		private void buildSecretList()
+		{
+			this.secretList.add("potato");
+			this.secretList.add("missile");
+			this.secretList.add("magic");
+			this.secretList.add("cheese");
+		}
 		/**
 		 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
 		 * 
@@ -151,6 +161,21 @@ public class ChatBot
 			return hasPoliticalTopic;
 		}
 		
+		public boolean secretChecker(String currentInput)
+		{
+            boolean hasSecret = false;
+			
+			for(String secret : secretList)
+			{
+				if(currentInput.toLowerCase().contains(secret.toLowerCase()))
+				{
+					hasSecret = true;
+				}
+			}		
+			
+			return hasSecret;
+		}
+		
 		/**
 		 * Checks to see that the supplied String value is in the current memesList variable.
 		 * @param currentInput The supplied String to be checked.
@@ -177,24 +202,25 @@ public class ChatBot
 		public String processConversation(String currentInput)
 		{
 			String nextConversation = "oh, what else would you like to talk about?";
-			int randomTopic = (int) (Math.random() * 5); //Generates random number between 0-4
+			int randomTopic = (int) (Math.random() * 6); //Generates random number between 0-5
+			
+			if(keyboardMashChecker(currentInput))
+			{
+				return "stop mashing";
+			}
 			
 			switch (randomTopic) //a way of choosing different options
 			{
 			    case 0:
 			    	if(memeChecker(currentInput))
 			    	{
-			    		nextConversation = "that is a very popular meme this year. what else are you" + " wanting to talk about?";
+			    		nextConversation = "that is a very popular meme this year.";
 			    	}
 				    break;
 			    case 1:
 			    	if(politicalTopicChecker(currentInput))
 			    	{
 			    		nextConversation = "I hate politics";
-			    	}
-			    	else
-			    	{   
-			    		nextConversation = "failed the political topic checker";
 			    	}
 			    	break;
 			    case 2:
@@ -210,8 +236,14 @@ public class ChatBot
 			    	}
 		            break;
 			    case 4:
+			    	if(secretChecker(currentInput))
+			    	{
+			    		nextConversation = "Your Missiles hit the orc, roll 1d4+1 force damage";
+			    	}
+			    	break;
+			    case 5:
 			    	nextConversation = "What do you want to talk about?";
-		            break;
+			    	break;
 		        default:
 		        	nextConversation = "Stormageddon has come... prepare to be astonished!";
 		        	break;
@@ -249,6 +281,10 @@ public class ChatBot
 			return memesList;
 		}
 		
+		public ArrayList<String> getSecretList()
+		{
+			return secretList;
+		}
 		/**
 		 * Getter method for the politicalTopicList object.
 		 * @return The reference to the political topic list.

@@ -3,7 +3,6 @@ package chat.controller;
 import chat.view.ChatView;
 import chat.model.ChatBot;
 import chat.view.ChatFrame;
-import chat.view.ChatPanel;
 
 /**
  * 
