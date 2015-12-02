@@ -1,17 +1,18 @@
 package chat.view;
 
 import javax.swing.*;
+
 import chat.controller.ChatController;
+
 import java.awt.Color;
 import java.awt.event.*;
 
 public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
-	private JButton firstButton;
+	private JButton submitButton;
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
-	private JButton submitButton;
 	private JTextField typingField;
 	private JLabel promptLabel;
 	private JTextArea chatArea;
@@ -21,20 +22,23 @@ public class ChatPanel extends JPanel
 		this.baseController = baseController;
 		
 		baseLayout = new SpringLayout();
-		firstButton = new JButton("Please do not click the button");
+		submitButton = new JButton("Please do not click the button");
 		firstTextField = new JTextField("words can be type here");
 		chatArea = new JTextArea();
-		submitButton = new JButton();
 		promptLabel = new JLabel();
 		typingField = new JTextField();
 		setupPanel();
 		setupLayout();
 		setupListeners();
+	
 	}	
 		
 	private void setupLayout()
 	{
-		
+		baseLayout.putConstraint(SpringLayout.WEST, firstTextField, 143, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, firstTextField, -50, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.SOUTH, submitButton, -10, SpringLayout.SOUTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, submitButton, -10, SpringLayout.EAST, this);
 	}
 	
 	private void setupPanel()
@@ -45,18 +49,22 @@ public class ChatPanel extends JPanel
 			this.add(chatArea);
 			this.add(submitButton);
 			this.add(promptLabel);
-			typingField.setToolTipText("type here for the chatbot");
+			typingField.setToolTipText("Type here for the chatbot");
 			chatArea.setEnabled(false);
 			
 		}
 		
 	private void setupListeners()
 	{
-		firstButton.addActionListener(new ActionListener()
+		submitButton.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-					firstTextField.setText("Much Wow, this is the most amazing click event ever! WOW");
+				String userText = typingField.getText(); //grab user typed answer
+				chatArea.append("\nUser: " + userText); //display info
+				typingField.setText(""); //send text to chatBot
+				String response = baseController.userToChatBot(userText); //chat will process
+				chatArea.append("\nChatBot: " + response); //display the response
 			}
 		});
 	}

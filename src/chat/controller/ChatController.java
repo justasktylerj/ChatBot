@@ -3,6 +3,7 @@ package chat.controller;
 import chat.view.ChatView;
 import chat.model.ChatBot;
 import chat.view.ChatFrame;
+import chat.view.ChatPanel;
 
 /**
  * 
@@ -14,6 +15,7 @@ public class ChatController
 	private ChatView display;
 	private ChatBot myBot;
 	private ChatFrame baseFrame;
+	
 	
 	public ChatController()
 	{
@@ -32,14 +34,25 @@ public class ChatController
 	private void chat()
 	{
 		String conversation = display.collectUserText("what would you like to talk about today");
-		while(myBot.lengthChecker(conversation))
-		{
-			conversation = myBot.processConversation(conversation);
-			conversation = display.collectUserText(conversation);
-		}
+		//while(myBot.lengthChecker(conversation))
+		//{
+		//	conversation = myBot.processConversation(conversation);
+		//	conversation = display.collectUserText(conversation);
+		//}
 	}
 	
-	private void ShutDown()
+	public String userToChatBot(String conversation)
+	{
+		String response = "";
+		if(myBot.quitChecker(conversation))
+		{
+			shutDown();
+		}
+		response = myBot.processConversation(conversation);
+		
+		return response;
+	}
+	private void shutDown()
 	{
 		display.displayText("Goodbye " + myBot.getUserName() + "I'm sorry Dave, i'm afriad I can't do that ");
 		System.exit(0);
