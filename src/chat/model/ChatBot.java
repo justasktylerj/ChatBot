@@ -53,8 +53,8 @@ public class ChatBot
 		
 		private void buildPoliticalTopicsList()
 		{
-			this.politicalTopicList.add("republican");
-			this.politicalTopicList.add("democrat");
+			this.politicalTopicList.add("Republican");
+			this.politicalTopicList.add("Democrat");
 			this.politicalTopicList.add("trump");
 			this.politicalTopicList.add("clinton");
 			this.politicalTopicList.add("election");
@@ -66,6 +66,7 @@ public class ChatBot
 			this.politicalTopicList.add("fiorina");
 			this.politicalTopicList.add("sanders");
 			this.politicalTopicList.add("vote");
+			this.politicalTopicList.add("11/4/16");
 		}
 		
 		private void buildSecretList()
@@ -85,16 +86,6 @@ public class ChatBot
 		public boolean lengthChecker(String currentInput)
 		{
 			boolean hasLength = false;
-			
-			if(currentInput != null)
-			{
-				if(currentInput.length() != 1)
-				{
-					hasLength = true;
-				}
-			}
-			
-			 //  
 			
 			if(currentInput != null && currentInput.length() > 0)
 			{
@@ -128,7 +119,7 @@ public class ChatBot
 		{
 			boolean hasMash = false;
 			
-			if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cub") || currentInput.equals(",./"))
+			if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
 			{
 				hasMash = true;
 			}
@@ -303,6 +294,6 @@ public class ChatBot
 		 */
 		public void setContent(String content)
 		{
-			
+			this.content = content;
 		}
 }
