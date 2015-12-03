@@ -27,7 +27,7 @@ public class ChatPanel extends JPanel
 		chatArea = new JTextArea(10,30);
 		promptLabel = new JLabel("Chat with me");
 		typingField = new JTextField("asda");
-		check = new JCheckBox("hi");
+		check = new JCheckBox("Orange", false);
 		
 		setupPanel();
 		setupLayout();
@@ -77,6 +77,21 @@ public class ChatPanel extends JPanel
 				firstTextField.setText(""); //send text to chatBot
 				String response = baseController.userToChatBot(userText); //chat will process
 				chatArea.append("\nChatBot: " + response); //display the response
+			}
+		});
+		
+		check.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent event)
+			{
+				if(check.isSelected())
+				{
+					setBackground(Color.ORANGE);
+				}
+				else
+				{
+					setBackground(Color.MAGENTA);
+				}
 			}
 		});
 	}
