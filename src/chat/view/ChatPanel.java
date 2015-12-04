@@ -1,9 +1,9 @@
 package chat.view;
 
 import javax.swing.*;
-
+//imports
 import chat.controller.ChatController;
-
+//pulls controller info
 import java.awt.Color;
 import java.awt.event.*;
 
@@ -17,7 +17,7 @@ public class ChatPanel extends JPanel
 	private JLabel promptLabel;
 	private JTextArea chatArea;
 	private JCheckBox check;
-	
+	//declare components
 	public ChatPanel(ChatController baseController)
 	{
 		this.baseController = baseController;
@@ -32,9 +32,9 @@ public class ChatPanel extends JPanel
 		setupPanel();
 		setupLayout();
 		setupListeners();
-	
+	//after the declarations are finished the setup starts
 	}	
-		
+		//constraints
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.WEST, firstTextField, 143, SpringLayout.WEST, this);
@@ -50,7 +50,7 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, check, 2, SpringLayout.NORTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.WEST, check, 10, SpringLayout.WEST, this);
 	}
-	
+	//set panel
 	private void setupPanel()
 		{
 			this.setLayout(baseLayout);
@@ -79,7 +79,7 @@ public class ChatPanel extends JPanel
 				chatArea.append("\nChatBot: " + response); //display the response
 			}
 		});
-		
+		//sets background to orange when the box is checked
 		check.addActionListener(new ActionListener()
 		{
 			public void actionPerformed(ActionEvent event)
