@@ -29,7 +29,7 @@ public class ChatController
 		display.displayText("Hello " + myBot.getUserName());
 		chat();
 	} 
-//how?
+//if told to shut down, makes an obscure reference, then shuts down.
 	private void chat()
 	{
 		String conversation = display.collectUserText("what would you like to talk about today");
@@ -56,7 +56,7 @@ public class ChatController
 		display.displayText("I'm sorry " + myBot.getUserName() + ", I'm afriad I can't do that ");
 		System.exit(0);
 	}
-
+//getters and setters
 	public ChatBot getChatBot()
 	{
 		return myBot;

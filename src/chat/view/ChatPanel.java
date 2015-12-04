@@ -34,7 +34,7 @@ public class ChatPanel extends JPanel
 		setupListeners();
 	//after the declarations are finished the setup starts
 	}	
-		//constraints
+		//constraints for components layout
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.WEST, firstTextField, 143, SpringLayout.WEST, this);
@@ -65,7 +65,7 @@ public class ChatPanel extends JPanel
 			
 			
 		}
-		
+		//listeners
 	private void setupListeners()
 	{
 		submitButton.addActionListener(new ActionListener()
@@ -95,7 +95,7 @@ public class ChatPanel extends JPanel
 			}
 		});
 	}
-		
+	//text field
 	public JTextField getTextField()
 	{
 		return typingField;

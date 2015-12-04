@@ -1,5 +1,5 @@
 package chat.view;
-
+//imports
 import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 
@@ -25,13 +25,13 @@ public class ChatView
     {
    	 JOptionPane.showMessageDialog(null, displayText);
     }
-
+//user input display
 	public String collectUserText(String displayText)
 	{
 		String userInput = "";
 		
 		userInput = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here :)").toString();
-		 
+		 //default words for chat popups are "answer here"
 		return userInput;
 	}
 	
