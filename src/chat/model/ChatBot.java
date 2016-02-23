@@ -36,7 +36,7 @@ public class ChatBot
 			buildPoliticalTopicsList();
 			buildSecretList();
 		}
-		
+		//key words for lists
 		private void buildMemesList()
 		{
 			this.memesList.add("cute animals");
@@ -50,7 +50,7 @@ public class ChatBot
 			this.memesList.add("what if I told you");
 			this.memesList.add("aliens");
 		}
-		
+		//""
 		private void buildPoliticalTopicsList()
 		{
 			this.politicalTopicList.add("Republican");
@@ -68,7 +68,7 @@ public class ChatBot
 			this.politicalTopicList.add("vote");
 			this.politicalTopicList.add("11/4/16");
 		}
-		
+		//""
 		private void buildSecretList()
 		{
 			this.secretList.add("potato");
@@ -114,7 +114,7 @@ public class ChatBot
 			
 			return hasContent;
 		}
-		
+		//checks for keyboard mashing
 		public boolean keyboardMashChecker(String currentInput)
 		{
 			boolean hasMash = false;
@@ -125,7 +125,7 @@ public class ChatBot
 			}
 			return hasMash;
 		}
-		
+		//checks for key words
 		public boolean quitChecker(String currentInput)
 		{
 			boolean hasQuit = false;
@@ -189,7 +189,7 @@ public class ChatBot
 			
 			return hasMeme;
 		}
-		
+		//searches input for words in lists, randomly selects an output based on the input returns.
 		public String processConversation(String currentInput)
 		{
 			String nextConversation = "oh, what else would you like to talk about?";
@@ -251,7 +251,7 @@ public class ChatBot
 		{
 			return userName;
 		}
-		
+		//getters and setters
 		/**
 		 * 
 		 * Returns the content area for this Chat bot instance.

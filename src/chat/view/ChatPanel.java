@@ -17,9 +17,16 @@ public class ChatPanel extends JPanel
 	private JLabel promptLabel;
 	private JTextArea chatArea;
 	private JCheckBox check;
+	private JScrollPane textPane;
+	private JButton tweetPane;
+	private JButton saveButton;
+	private JButton loadButton;
+	
 	//declare components
 	public ChatPanel(ChatController baseController)
 	{
+	
+		
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		submitButton = new JButton("click the button");
@@ -29,12 +36,23 @@ public class ChatPanel extends JPanel
 		typingField = new JTextField("asda");
 		check = new JCheckBox("Orange", false);
 		
+		setupChatPane();
 		setupPanel();
 		setupLayout();
 		setupListeners();
 	//after the declarations are finished the setup starts
 	}	
-		//constraints for components layout
+		
+	private void setupChatPane()
+	{
+		chatArea.setLineWrap(true);
+		chatArea.setWrapStyleWord(true);
+		chatArea.setEditable(false);
+		textPane = new JScrollPane(chatArea);
+		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+	}
+	
 	private void setupLayout()
 	{
 		baseLayout.putConstraint(SpringLayout.WEST, firstTextField, 143, SpringLayout.WEST, this);
@@ -50,14 +68,15 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, check, 2, SpringLayout.NORTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.WEST, check, 10, SpringLayout.WEST, this);
 	}
-	//set panel
+	
 	private void setupPanel()
 		{
 			this.setLayout(baseLayout);
 			this.setBackground(Color.MAGENTA);
 			this.add(firstTextField);
-			this.add(chatArea);
+			//this.add(chatArea);  DO NOT HAVE
 			this.add(submitButton);
+			this.add(textPane);
 			this.add(check);
 			this.add(promptLabel);
 			typingField.setToolTipText("Type here for the chatbot");
@@ -65,7 +84,7 @@ public class ChatPanel extends JPanel
 			
 			
 		}
-		//listeners
+		
 	private void setupListeners()
 	{
 		submitButton.addActionListener(new ActionListener()
