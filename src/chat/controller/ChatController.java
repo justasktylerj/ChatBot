@@ -33,11 +33,11 @@ public class ChatController
 	private void chat()
 	{
 		String conversation = display.collectUserText("what would you like to talk about today");
-		//while(myBot.lengthChecker(conversation))
-		//{
-		//	conversation = myBot.processConversation(conversation);
-		//	conversation = display.collectUserText(conversation);
-		//}
+		while(myBot.lengthChecker(conversation))
+		{
+			conversation = myBot.processConversation(conversation);
+			conversation = display.collectUserText(conversation);
+		}
 	}
 	
 	public String userToChatBot(String conversation)
