@@ -43,14 +43,17 @@ public class ChatController
 	public String userToChatBot(String conversation)
 	{
 		String response = "";
+		
 		if(myBot.quitChecker(conversation))
 		{
 			shutDown();
 		}
+		
 		response = myBot.processConversation(conversation);
 		
 		return response;
 	}
+	
 	private void shutDown()
 	{
 		display.displayText("I'm sorry " + myBot.getUserName() + ", I'm afriad I can't do that ");

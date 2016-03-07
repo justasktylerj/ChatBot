@@ -6,11 +6,14 @@ import chat.controller.ChatController;
 //pulls controller info
 import java.awt.Color;
 import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
 	private JButton submitButton;
+	private JButton quitButton;
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
 	private JTextField typingField;
@@ -29,12 +32,13 @@ public class ChatPanel extends JPanel
 		
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
-		submitButton = new JButton("click the button");
+		submitButton = new JButton("Say");
 		firstTextField = new JTextField("words can be type here", 20);
 		chatArea = new JTextArea(10,30);
 		promptLabel = new JLabel("Chat with me");
 		typingField = new JTextField("asda");
 		check = new JCheckBox("Orange", false);
+		quitButton = new JButton("Quit");
 		
 		setupChatPane();
 		setupPanel();
@@ -48,10 +52,27 @@ public class ChatPanel extends JPanel
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);
-		textPane = new JScrollPane(chatArea);
+		//textPane = new JScrollPane(chatArea);
 		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 	}
+
+	private void setupPanel()
+		{
+			this.setLayout(baseLayout);
+			this.setBackground(Color.MAGENTA);
+			this.add(firstTextField);
+			//this.add(chatArea);  DO NOT HAVE
+			this.add(submitButton);
+			this.add(quitButton);
+			this.add(textPane);
+			this.add(check);
+			this.add(promptLabel);
+			typingField.setToolTipText("Type here for the chatbot");
+			chatArea.setEnabled(false);
+			
+			
+		}
 	
 	private void setupLayout()
 	{
@@ -68,22 +89,6 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.NORTH, check, 2, SpringLayout.NORTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.WEST, check, 10, SpringLayout.WEST, this);
 	}
-	
-	private void setupPanel()
-		{
-			this.setLayout(baseLayout);
-			this.setBackground(Color.MAGENTA);
-			this.add(firstTextField);
-			//this.add(chatArea);  DO NOT HAVE
-			this.add(submitButton);
-			this.add(textPane);
-			this.add(check);
-			this.add(promptLabel);
-			typingField.setToolTipText("Type here for the chatbot");
-			chatArea.setEnabled(false);
-			
-			
-		}
 		
 	private void setupListeners()
 	{
@@ -113,8 +118,55 @@ public class ChatPanel extends JPanel
 				}
 			}
 		});
+		
+		 quitButton.addActionListener(new ActionListener()
+		 {
+			 public void actionPerformed(ActionEvent click)
+			 {
+				 shutDown();
+			 }
+		 });
+		 
+		 this.addMouseListener(new MouseListener()
+		 {
+			 public void mouseClicked(MouseEvent click)
+			 {
+				 // EmptyListener
+			 }
+			 
+			 @Override
+			 public void mousePressed(MouseEvent click)
+			 {
+				 //empty placeholder
+			 }
+
+			 @Override
+			 public void mouseReleased(MouseEvent click)
+			 {
+				 //empty placeholder
+			 }
+			 
+			 @Override
+			 public void mouseEntered(MouseEvent click)
+			 {
+				 //empty placeholder
+			 }
+			 
+			 @Override
+			 public void mouseExited(MouseEvent click)
+			 {
+				 //empty placeholder
+			 }
+		 });
+		 
 	}
-	//text field
+	
+	protected void shutDown()
+	{
+		JOptionPane.showMessageDialog(null, "I sorry Dave, I'm, afraid I can't Do that");
+		System.exit(0);
+	}
+	
 	public JTextField getTextField()
 	{
 		return typingField;
