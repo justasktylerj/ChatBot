@@ -12,8 +12,6 @@ import java.awt.event.*;
 public class ChatPanel extends JPanel
 {
 	private ChatController baseController;
-	private JButton submitButton;
-	private JButton quitButton;
 	private JTextField firstTextField;
 	private SpringLayout baseLayout;
 	private JTextField typingField;
@@ -21,9 +19,13 @@ public class ChatPanel extends JPanel
 	private JTextArea chatArea;
 	private JCheckBox check;
 	private JScrollPane textPane;
-	private JButton tweetPane;
+	private JButton tweetButton;
 	private JButton saveButton;
 	private JButton loadButton;
+	private JButton submitButton;
+	private JButton quitButton;
+	
+	
 	
 	//declare components
 	public ChatPanel(ChatController baseController)
@@ -39,6 +41,7 @@ public class ChatPanel extends JPanel
 		typingField = new JTextField("asda");
 		check = new JCheckBox("Orange", false);
 		quitButton = new JButton("Quit");
+		tweetButton = new JButton("yay");
 		
 		setupChatPane();
 		setupPanel();
@@ -65,6 +68,9 @@ public class ChatPanel extends JPanel
 			//this.add(chatArea);  DO NOT HAVE
 			this.add(submitButton);
 			this.add(quitButton);
+			this.add(tweetButton);
+			this.add(saveButton);
+			this.add(loadButton);
 			this.add(textPane);
 			this.add(check);
 			this.add(promptLabel);
@@ -127,6 +133,15 @@ public class ChatPanel extends JPanel
 			 }
 		 });
 		 
+		 tweetButton.addActionListener(new ActionListener()
+		 {
+			 public void actionPerformed(ActionEvent event)
+				{
+				 	baseController.sendTweet("no text to send");
+				}
+		 });
+				 
+		 
 		 this.addMouseListener(new MouseListener()
 		 {
 			 public void mouseClicked(MouseEvent click)
@@ -159,6 +174,7 @@ public class ChatPanel extends JPanel
 			 }
 		 });
 		 
+		
 	}
 	
 	protected void shutDown()
