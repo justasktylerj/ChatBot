@@ -41,7 +41,7 @@ public class ChatPanel extends JPanel
 		typingField = new JTextField("asda");
 		check = new JCheckBox("Orange", false);
 		quitButton = new JButton("Quit");
-		tweetButton = new JButton("yay");
+		tweetButton = new JButton("Tweet");
 		
 		setupChatPane();
 		setupPanel();
@@ -94,6 +94,10 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, promptLabel, -6, SpringLayout.WEST, submitButton);
 		baseLayout.putConstraint(SpringLayout.NORTH, check, 2, SpringLayout.NORTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.WEST, check, 10, SpringLayout.WEST, this);
+		baseLayout.putConstraint(SpringLayout.WEST, quitButton, 0, SpringLayout.WEST, tweetButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, tweetButton, 0, SpringLayout.NORTH, submitButton);
+		baseLayout.putConstraint(SpringLayout.EAST, tweetButton, 0, SpringLayout.EAST, check);
+		baseLayout.putConstraint(SpringLayout.NORTH, quitButton, 10, SpringLayout.NORTH, this);
 	}
 		
 	private void setupListeners()
