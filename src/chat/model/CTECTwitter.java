@@ -31,9 +31,5 @@ public class CTECTwitter
 		}
 	}
 	
-	public String topResults(List<String> wordList)
-	{
-		
-	}
 }
 
