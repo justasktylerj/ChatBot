@@ -258,11 +258,6 @@ public class ChatBot
 			int randomTopic = (int) (Math.random() * 7); //Generates random number between 0-7
 			
 			String nextConversation = "oh, what else would you like to talk about?";
-
-			for(int searchTopic = 0; searchTopic >= 7; searchTopic++)
-			{
-				randomTopic = searchTopic;
-			}
 						
 			if(keyboardMashChecker(currentInput))
 			{
@@ -368,8 +363,7 @@ public class ChatBot
 		        	nextConversation = "Stormageddon has come... Prepare To Be ASTONISHED!";
 		        	break;
 			 }
-					
-			return nextConversation;
+		return nextConversation;
 		}
 		/**
 		 * gsfs
