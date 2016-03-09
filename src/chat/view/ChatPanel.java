@@ -42,6 +42,10 @@ public class ChatPanel extends JPanel
 		check = new JCheckBox("Orange", false);
 		quitButton = new JButton("Quit");
 		tweetButton = new JButton("Tweet");
+		saveButton = new JButton("Save");
+	
+		loadButton = new JButton("load");
+		
 		
 		setupChatPane();
 		setupPanel();
@@ -55,9 +59,10 @@ public class ChatPanel extends JPanel
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);
-		//textPane = new JScrollPane(chatArea);
+		textPane = new JScrollPane(chatArea);
+		
 		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	}
 
 	private void setupPanel()
@@ -94,10 +99,15 @@ public class ChatPanel extends JPanel
 		baseLayout.putConstraint(SpringLayout.EAST, promptLabel, -6, SpringLayout.WEST, submitButton);
 		baseLayout.putConstraint(SpringLayout.NORTH, check, 2, SpringLayout.NORTH, firstTextField);
 		baseLayout.putConstraint(SpringLayout.WEST, check, 10, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.WEST, quitButton, 0, SpringLayout.WEST, tweetButton);
 		baseLayout.putConstraint(SpringLayout.NORTH, tweetButton, 0, SpringLayout.NORTH, submitButton);
 		baseLayout.putConstraint(SpringLayout.EAST, tweetButton, 0, SpringLayout.EAST, check);
-		baseLayout.putConstraint(SpringLayout.NORTH, quitButton, 10, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.NORTH, saveButton, 0, SpringLayout.NORTH, this);
+		baseLayout.putConstraint(SpringLayout.EAST, saveButton, 0, SpringLayout.EAST, submitButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, loadButton, 4, SpringLayout.SOUTH, saveButton);
+		baseLayout.putConstraint(SpringLayout.EAST, loadButton, 0, SpringLayout.EAST, submitButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, quitButton, 8, SpringLayout.SOUTH, textPane);
+		baseLayout.putConstraint(SpringLayout.WEST, quitButton, 10, SpringLayout.WEST, textPane);
+		
 	}
 		
 	private void setupListeners()

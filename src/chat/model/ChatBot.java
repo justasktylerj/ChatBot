@@ -15,6 +15,7 @@ public class ChatBot
 		private ArrayList<String> memesList;
 		private ArrayList<String> politicalTopicList;
 		private ArrayList<String> secretList;
+		private ArrayList<String> whineList;
 		private String userName;
 		private String content;
 		
@@ -29,12 +30,14 @@ public class ChatBot
 			this.memesList = new ArrayList<String>();
 			this.politicalTopicList = new ArrayList<String>();
 			this.secretList = new ArrayList<String>();
+			this.whineList = new ArrayList<String>();
 			this.userName = userName;
 			this.content = "memes";
 			
 			buildMemesList();
 			buildPoliticalTopicsList();
 			buildSecretList();
+			buildWhineList();
 		}
 		//key words for lists
 		private void buildMemesList()
@@ -75,6 +78,22 @@ public class ChatBot
 			this.secretList.add("missile");
 			this.secretList.add("magic");
 			this.secretList.add("cheese");
+			this.secretList.add("cast");
+		}
+		
+		private void buildWhineList()
+		{
+			this.whineList.add("sad");
+			this.whineList.add("hate");
+			this.whineList.add("stupid");
+			this.whineList.add("mean");
+			this.whineList.add("rude");
+			this.whineList.add("OMG");
+			this.whineList.add("lost");
+			this.whineList.add("tired");
+			this.whineList.add("unemployed");
+			this.whineList.add("sleepy");
+			this.whineList.add("depressed");
 		}
 		/**
 		 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
@@ -119,7 +138,7 @@ public class ChatBot
 		{
 			boolean hasMash = false;
 			
-			if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./"))
+			if(currentInput.equals("sdf") || currentInput.equals("dfg") || currentInput.equals("cvb") || currentInput.equals(",./") || currentInput.equals("asa"))
 			{
 				hasMash = true;
 			}
@@ -167,6 +186,21 @@ public class ChatBot
 			return hasSecret;
 		}
 		
+		public boolean whineChecker(String currentInput)
+		{
+            boolean hasWhine = false;
+			
+			for(String whine : whineList)
+			{
+				if(currentInput.toLowerCase().contains(whine.toLowerCase()))
+				{
+					hasWhine = true;
+				}
+			}		
+			
+			return hasWhine;
+		}
+		
 		/**
 		 * Checks to see that the supplied String value is in the current memesList variable.
 		 * @param currentInput The supplied String to be checked.
@@ -192,12 +226,15 @@ public class ChatBot
 		//searches input for words in lists, randomly selects an output based on the input returns.
 		public String processConversation(String currentInput)
 		{
+			
+			int randomTopic = (int) (Math.random() * 7); //Generates random number between 0-5
 			String nextConversation = "oh, what else would you like to talk about?";
-			int randomTopic = (int) (Math.random() * 6); //Generates random number between 0-5
 			
 			if(keyboardMashChecker(currentInput))
 			{
-				return "stop mashing";
+				return "stop mashing, butthead";
+				
+				
 			}
 			
 			switch (randomTopic) //a way of choosing different options
@@ -211,7 +248,7 @@ public class ChatBot
 			    case 1:
 			    	if(politicalTopicChecker(currentInput))
 			    	{
-			    		nextConversation = "I hate politics";
+			    		nextConversation = "I hate politics, you dirty commy";
 			    	}
 			    	break;
 			    case 2:
@@ -233,10 +270,46 @@ public class ChatBot
 			    	}
 			    	break;
 			    case 5:
+			    	if(whineChecker(currentInput))
+			    	{
+			    		int randomLecture = (int) (Math.random() * 7);
+			    		
+			    		if(randomLecture == 1)
+			    		{
+			    			nextConversation = "You know what? Sit down and shut up! I am fed up with your complaining!";
+			    		}
+			    		if(randomLecture == 2)
+			    		{
+			    			nextConversation = "Whiner";
+			    		}
+			    		if(randomLecture == 3)
+			    		{
+			    			nextConversation = "I bet you deserved it, meatbag";
+			    		}
+			    		if(randomLecture == 4)
+			    		{
+			    			nextConversation = "Do you always create your own problems?";
+			    		}
+			    		if(randomLecture == 5)
+			    		{
+			    			nextConversation = "Cry me a river, build a bridge, and GET OVER IT!!";
+			    		}
+			    		if(randomLecture == 6)
+			    		{
+			    			nextConversation = "*Crying*";
+			    		}
+			    		if(randomLecture == 7)
+			    		{
+			    			nextConversation = "If you think talking to a computer about your problems will help, try talking to a rock.";
+			    		}
+			    		
+			    	}
+			    	break;
+			    case 6:
 			    	nextConversation = "What do you want to talk about?";
 			    	break;
 		        default:
-		        	nextConversation = "Stormageddon has come... prepare to be astonished!";
+		        	nextConversation = "Stormageddon has come... Prepare To Be ASTONISHED!";
 		        	break;
 			 }
 					
