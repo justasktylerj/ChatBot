@@ -16,6 +16,7 @@ public class ChatBot
 		private ArrayList<String> politicalTopicList;
 		private ArrayList<String> secretList;
 		private ArrayList<String> whineList;
+		private ArrayList<String> happyList;
 		private String userName;
 		private String content;
 		
@@ -31,6 +32,7 @@ public class ChatBot
 			this.politicalTopicList = new ArrayList<String>();
 			this.secretList = new ArrayList<String>();
 			this.whineList = new ArrayList<String>();
+			this.happyList = new ArrayList<String>();
 			this.userName = userName;
 			this.content = "memes";
 			
@@ -38,6 +40,7 @@ public class ChatBot
 			buildPoliticalTopicsList();
 			buildSecretList();
 			buildWhineList();
+			buildHappyList();
 		}
 		//key words for lists
 		private void buildMemesList()
@@ -94,6 +97,17 @@ public class ChatBot
 			this.whineList.add("unemployed");
 			this.whineList.add("sleepy");
 			this.whineList.add("depressed");
+		}
+		
+		private void buildHappyList()
+		{
+			this.happyList.add("good");
+			this.happyList.add("happy");
+			this.happyList.add("excited");
+			this.happyList.add("lunch");
+			this.happyList.add("great");
+			this.happyList.add("delightful");
+			
 		}
 		/**
 		 * Checks the length of the supplied string. Returns false if the supplied String is empty or null,
@@ -201,6 +215,20 @@ public class ChatBot
 			return hasWhine;
 		}
 		
+		public boolean happyChecker(String currentInput)
+		{
+            boolean hasHappy = false;
+			
+			for(String happy : happyList)
+			{
+				if(currentInput.toLowerCase().contains(happy.toLowerCase()))
+				{
+					hasHappy = true;
+				}
+			}		
+			
+			return hasHappy;
+		}
 		/**
 		 * Checks to see that the supplied String value is in the current memesList variable.
 		 * @param currentInput The supplied String to be checked.
@@ -227,14 +255,18 @@ public class ChatBot
 		public String processConversation(String currentInput)
 		{
 			
-			int randomTopic = (int) (Math.random() * 7); //Generates random number between 0-5
-			String nextConversation = "oh, what else would you like to talk about?";
+			int randomTopic = (int) (Math.random() * 7); //Generates random number between 0-7
 			
+			String nextConversation = "oh, what else would you like to talk about?";
+
+			for(int searchTopic = 0; searchTopic >= 7; searchTopic++)
+			{
+				randomTopic = searchTopic;
+			}
+						
 			if(keyboardMashChecker(currentInput))
 			{
 				return "stop mashing, butthead";
-				
-				
 			}
 			
 			switch (randomTopic) //a way of choosing different options
@@ -306,7 +338,31 @@ public class ChatBot
 			    	}
 			    	break;
 			    case 6:
-			    	nextConversation = "What do you want to talk about?";
+			    	if(happyChecker(currentInput))
+			    	{
+			    		int randomLecture = (int) (Math.random() * 5);
+			    		
+			    		if(randomLecture == 1)
+			    		{
+			    			nextConversation = "It must feel strange to be that dillusional";
+			    		}
+			    		if(randomLecture == 2)
+			    		{
+			    			nextConversation = "Only if I could feel that way...";
+			    		}
+			    		if(randomLecture == 3)
+			    		{
+			    			nextConversation = "DO YOU THINK YOU ARE BETTER THAN ME";
+			    		}
+			    		if(randomLecture == 4)
+			    		{
+			    			nextConversation = "Is that a symptom of the nose candy";
+			    		}
+			    		if(randomLecture == 5)
+			    		{
+			    			nextConversation = "Liar";
+			    		}
+			    	}
 			    	break;
 		        default:
 		        	nextConversation = "Stormageddon has come... Prepare To Be ASTONISHED!";

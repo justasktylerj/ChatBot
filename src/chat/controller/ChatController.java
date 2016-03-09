@@ -35,7 +35,7 @@ public class ChatController
 //if told to shut down, makes an obscure reference, then shuts down.
 	private void chat()
 	{
-		String conversation = display.collectUserText("what would you like to talk about today");
+		String conversation = display.collectUserText("How are you feeling?");
 		while(myBot.lengthChecker(conversation))
 		{
 			conversation = myBot.processConversation(conversation);
