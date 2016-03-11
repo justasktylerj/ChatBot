@@ -24,6 +24,7 @@ public class ChatPanel extends JPanel
 	private JButton loadButton;
 	private JButton submitButton;
 	private JButton quitButton;
+	private JButton analyseButton;
 	
 	
 	
@@ -43,7 +44,7 @@ public class ChatPanel extends JPanel
 		quitButton = new JButton("Quit");
 		tweetButton = new JButton("Tweet");
 		saveButton = new JButton("Save");
-	
+		analyseButton = new JButton("analyse");
 		loadButton = new JButton("load");
 		
 		
@@ -77,10 +78,12 @@ public class ChatPanel extends JPanel
 			this.add(saveButton);
 			this.add(loadButton);
 			this.add(textPane);
+			this.add(analyseButton);
 			this.add(check);
 			this.add(promptLabel);
 			typingField.setToolTipText("Type here for the chatbot");
 			chatArea.setEnabled(false);
+			this.setPreferredSize(new Dimension(500, 500));
 			
 			
 		}
@@ -155,6 +158,15 @@ public class ChatPanel extends JPanel
 				}
 		 });
 				 
+		 analyseButton.addActionListener(new ActionListener()
+		 {
+			 public void actionPerformed(ActionEvent event)
+				{
+				 	String user = typingField.getText();
+				 	String results = baseController.analyse(user);
+				 	chatArea.setText(results);
+				}
+		 });
 		 
 		 this.addMouseListener(new MouseListener()
 		 {
