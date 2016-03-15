@@ -7,7 +7,7 @@ import chat.controller.ChatController;
 public class CTECTwitter 
 {
 	private ArrayList<Status> statusList;
-	private ArrayList<String> wordList;
+	private ArrayList<String> wordsList;
 	private Twitter chatbotTwitter;
 	private ChatController baseController;
 	
@@ -16,7 +16,7 @@ public class CTECTwitter
 		this.baseController = baseController;
 		chatbotTwitter = TwitterFactory.getSingleton();
 		statusList = new ArrayList<Status>();
-		wordList = new ArrayList<String>();
+		wordsList = new ArrayList<String>();
 	}
 
 	public void sendTweet(String tweet)
@@ -31,14 +31,21 @@ public class CTECTwitter
 		}
 	}
 	
-	public String topResults(List<String> wordList)
+	public String topResults(List<String> wordsList)
 	{
 		
 	}
 	
 	private void removeEmptyText()
 	{
-		
+		for (int spot = 0; spot < wordsList.size(); spot++)
+		{
+			if (wordsList.get(spot).equals(""));
+			{
+				wordsList.remove(spot);
+				spot--;
+			}
+		}
 	}
 	
 	public void loadTweets(String twitterHandle) throws TwitterException
