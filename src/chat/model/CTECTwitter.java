@@ -1,13 +1,14 @@
 package chat.model;
 
 import java.util.ArrayList;
+import java.util.List;
 import twitter4j.*;
 import chat.controller.ChatController;
 
 public class CTECTwitter 
 {
 	private ArrayList<Status> statusList;
-	private ArrayList<String> wordsList;
+	private ArrayList<String> wordList;
 	private Twitter chatbotTwitter;
 	private ChatController baseController;
 	
@@ -16,7 +17,7 @@ public class CTECTwitter
 		this.baseController = baseController;
 		chatbotTwitter = TwitterFactory.getSingleton();
 		statusList = new ArrayList<Status>();
-		wordsList = new ArrayList<String>();
+		wordList = new ArrayList<String>();
 	}
 
 	public void sendTweet(String tweet)
@@ -31,52 +32,75 @@ public class CTECTwitter
 		}
 	}
 	
-	public String topResults(List<String> wordsList)
+	public String topResults(List<String> wordList)
 	{
 		
 	}
 	
+
+	public void loadTweets(String twitterHandle) throws TwitterException
+	{
+		Paging statusPage = new Paging(1, 200);
+		int page = 1;
+		while (page <= 10)
+		{
+			statusPage.setPage(page);
+			statusList.addAll(chatbotTwitter.getUserTimeline(twitterHandle, statusPage));
+			page++;
+		}
+		
+		for (Status currentStatus : statusList)
+		{
+			String[] tweetText = currentStatus.getText().split(" ");
+			for (String word : tweetText)
+			{
+				wordList.add(removePunctuation(word).toLowerCase());
+			}
+		}
+		removeCommonEnglishWords(tweetText);
+		removeEmptyText();
+	}
+
 	private void removeEmptyText()
 	{
-		for (int spot = 0; spot < wordsList.size(); spot++)
+		for (int spot = 0; spot < wordList.size(); spot++)
 		{
-			if (wordsList.get(spot).equals(""));
+			if (wordList.get(spot).equals(""));
 			{
-				wordsList.remove(spot);
+				wordList.remove(spot);
 				spot--;
 			}
 		}
 	}
 	
-	public void loadTweets(String twitterHandle) throws TwitterException
+	private List removeCommonEnglishWords(List<String> wordList)
 	{
-		Paging statsPage = new Paging(1, 200);
-		int page = 1;
-		while (page <= 10)
-		{
-			statusPage.setPage(page);
-			statusesPage.addAll(chatbotTwitter.getUserTimeline(twitterHandle, statusPage));
-			page++;
-		}
+		String[] boringWords = importWordsToArray();
 		
-		for (Status currentStatus : statuses)
+		for (int count = 0; count < wordList.size(); count++)
 		{
-			String[] tweetText = currentStatus.getText().split(" ");
-			for (String word : tweetText)
+			for (int removeSpot = 0; removeSpot < boringWords.length; removeSpot++)
 			{
-				tweetText.add(removePunctuation(word).toLowerCase());
+				if (wordList.get(count).equalsIgnoreCase(boringWords[removeSpot]))
+				{
+					wordList.remove(count);
+					count--;
+					removeSpot = boringWords.length;
+				}
 			}
 		}
-		removeCommonEnglishWords(wordsList);
-		removeEmptyText();
+		
+		removeTwitterUsernamesFromList(wordList);
+		
+		return wordList;
 	}
-
+	
 	private String[] importWordsToArray()
 	{
 		
 	}
 	
-	private void removeTwitterNamesFromList(List<String> wordList)
+	private void removeTwitterUsernamesFromList(List<String> wordList)
 	{
 		
 	}
