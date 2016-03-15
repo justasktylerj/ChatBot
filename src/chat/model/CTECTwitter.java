@@ -1,11 +1,7 @@
 package chat.model;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
+import java.io.*;
+import java.util.*;
 import twitter4j.*;
 import chat.controller.ChatController;
 
@@ -77,6 +73,7 @@ public class CTECTwitter
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
 	private List removeCommonEnglishWords(List<String> wordList)
 	{
 		String[] boringWords = importWordsToArray();
@@ -130,7 +127,14 @@ public class CTECTwitter
 	
 	private void removeTwitterUsernamesFromList(List<String> wordList)
 	{
-		
+		for (int wordCount = 0; wordCount < wordList.size(); wordCount++)
+		{
+			if (wordList.get(wordCount).length() >= 1 && wordList.get(wordCount).charAt(0) == '@')
+			{
+				wordList.remove(wordCount);
+				wordCount--;
+			}
+		}
 	}
 	
 	private String removePunctuation(String currentString)
@@ -140,7 +144,7 @@ public class CTECTwitter
 		String scrubbedString = "";
 		for (int i = 0; i < currentString.length(); i++);
 		{
-			if (punctuation.indexOf(currentString.chartAt(i)) == -1)
+			if (punctuation.indexOf(currentString.charAt(i)) == -1)
 			{
 				scrubbedString += currentString.charAt(i);
 			}
@@ -150,7 +154,7 @@ public class CTECTwitter
 
 	public String sampleInvestigation()
 	{
-		
+		return null;
 	}
 }
 

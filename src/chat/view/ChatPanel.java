@@ -205,7 +205,7 @@ public class ChatPanel extends JPanel
 	
 	protected void shutDown()
 	{
-		JOptionPane.showMessageDialog(null, "I sorry Dave, I'm, afraid I can't Do that");
+		JOptionPane.showMessageDialog(null, "I'm sorry Dave, I'm afraid I can't do that");
 		System.exit(0);
 	}
 	
