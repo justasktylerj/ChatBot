@@ -1,8 +1,11 @@
 package chat.model;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
 import twitter4j.*;
 import chat.controller.ChatController;
 
@@ -58,7 +61,7 @@ public class CTECTwitter
 				wordList.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeCommonEnglishWords(tweetText);
+		removeCommonEnglishWords(wordList);
 		removeEmptyText();
 	}
 
