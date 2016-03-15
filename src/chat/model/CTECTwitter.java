@@ -32,9 +32,34 @@ public class CTECTwitter
 		}
 	}
 	
-	public String topResults(List<String> wordList)
+	public String topResults()
 	{
-		return null;
+		String tweetResults = "";
+		
+		int topWordLocation = 0;
+		int topCount = 0;
+		
+		for (int index = 0; index < wordList.size(); index++)
+		{
+			int wordUseCount = 1; 
+			
+			for (int spot = index + 1; spot < wordList.size(); spot++)
+			{	
+				if(wordList.get(index).equals(wordList.get(spot)))
+				{
+					wordUseCount = 0;
+				}
+				if(wordUseCount > topCount)
+				{
+					topCount = wordUseCount;
+					topWordLocation = index;
+				}
+			}
+		}
+		
+		tweetResults = "the top word in the tweets was " + wordList.get(topWordLocation) + " and it was used " + wordUseCount + " times!";
+		
+		return tweetResults;
 	}
 	
 
@@ -142,7 +167,7 @@ public class CTECTwitter
 		String punctuation = ".,'?!:;\"(){}^[]<>- ";
 		
 		String scrubbedString = "";
-		for (int i = 0; i < currentString.length(); i++);
+		for (int i = 0; i < currentString.length(); i++)
 		{
 			if (punctuation.indexOf(currentString.charAt(i)) == -1)
 			{
