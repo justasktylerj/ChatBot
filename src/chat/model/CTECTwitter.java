@@ -60,7 +60,7 @@ public class CTECTwitter
 				tweetText.add(removePunctuation(word).toLowerCase());
 			}
 		}
-		removeCommonEnglishWords(tweetTexts);
+		removeCommonEnglishWords(wordsList);
 		removeEmptyText();
 	}
 
@@ -73,6 +73,25 @@ public class CTECTwitter
 	{
 		
 	}
+	
+	private String removePunctuation(String currentString)
+	{
+		String punctuation = ".,'?!:;\"(){}^[]<>- ";
+		
+		String scrubbedString = "";
+		for (int i = 0; i < currentString.length(); i++);
+		{
+			if (punctuation.indexOf(currentString.chartAt(i)) == -1)
+			{
+				scrubbedString += currentString.charAt(i);
+			}
+		}
+		return scrubbedString;
+	}
 
+	public String sampleInvestigation()
+	{
+		
+	}
 }
 
