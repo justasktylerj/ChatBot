@@ -44,7 +44,7 @@ public class ChatPanel extends JPanel
 		saveButton = new JButton("Save");			
 		analyseButton = new JButton("analyse");			
 		loadButton = new JButton("load");		
-		
+		chatArea = new JTextArea(10,25);
 		setupChatPanel();
 		setupPanel();
 		setupLayout();
