@@ -7,7 +7,7 @@ import chat.controller.ChatController;
 import java.awt.Color;
 import java.awt.event.*;
 import java.awt.*;
-import java.awt.event.*;
+import chat.model.*;
 
 public class ChatPanel extends JPanel
 {
@@ -32,39 +32,33 @@ public class ChatPanel extends JPanel
 	public ChatPanel(ChatController baseController)
 	{
 	
-		
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
 		submitButton = new JButton("Say");
 		firstTextField = new JTextField("words can be type here", 20);
-		promptLabel = new JLabel("Chat with me");
-		
+		promptLabel = new JLabel("Chat with me");	
 		typingField = new JTextField("asda");
 		check = new JCheckBox("Orange", false);
-		quitButton = new JButton("Quit");
-		
-		tweetButton = new JButton("Tweet");
-		
-		saveButton = new JButton("Save");		
-		
-		analyseButton = new JButton("analyse");		
-		
+		quitButton = new JButton("Quit");	
+		tweetButton = new JButton("Tweet");	
+		saveButton = new JButton("Save");			
+		analyseButton = new JButton("analyse");			
 		loadButton = new JButton("load");		
 		
-		
-		setupChatPane();
+		setupChatPanel();
 		setupPanel();
 		setupLayout();
 		setupListeners();
 	//after the declarations are finished the setup starts
 	}	
 		
-	private void setupChatPane()
+	private void setupChatPanel()
 	{
+		textPane = new JScrollPane(chatArea);	
+		
 		chatArea.setLineWrap(true);
 		chatArea.setWrapStyleWord(true);
 		chatArea.setEditable(false);
-		textPane = new JScrollPane();				
 		textPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		textPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 	}
@@ -74,7 +68,6 @@ public class ChatPanel extends JPanel
 			this.setLayout(baseLayout);
 			this.setBackground(Color.MAGENTA);
 			this.add(firstTextField);
-			//this.add(chatArea);  DO NOT HAVE
 			this.add(submitButton);
 			this.add(quitButton);
 			this.add(tweetButton);
@@ -86,12 +79,6 @@ public class ChatPanel extends JPanel
 			this.add(promptLabel);
 			typingField.setToolTipText("Type here for the chatbot");
 			this.setPreferredSize(new Dimension(400, 400));
-			chatArea = new JTextArea(10,30);
-			baseLayout.putConstraint(SpringLayout.SOUTH, chatArea, -6, SpringLayout.NORTH, firstTextField);
-			baseLayout.putConstraint(SpringLayout.EAST, chatArea, 363, SpringLayout.WEST, this);
-			add(chatArea);
-			baseLayout.putConstraint(SpringLayout.NORTH, chatArea, 3, SpringLayout.SOUTH, loadButton);
-			baseLayout.putConstraint(SpringLayout.WEST, chatArea, 39, SpringLayout.WEST, this);
 			chatArea.setEnabled(false);
 			
 			
