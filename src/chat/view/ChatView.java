@@ -30,7 +30,7 @@ public class ChatView
 	{
 		String userInput = "";
 		
-		userInput = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here :)").toString();
+		userInput = JOptionPane.showInputDialog(null, displayText, windowMessage, JOptionPane.PLAIN_MESSAGE, chatIcon, null, "Answer here :)") + "";
 		 //default words for chat popups are "answer here"
 		return userInput;
 	}

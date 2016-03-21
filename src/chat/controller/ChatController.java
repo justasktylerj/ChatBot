@@ -30,7 +30,7 @@ public class ChatController
 	public void start()
 	{
 		display.displayText("Hello " + myBot.getUserName());
-		chat();
+//		chat();
 	} 
 //if told to shut down, makes an obscure reference, then shuts down.
 	private void chat()
