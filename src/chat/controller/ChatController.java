@@ -71,7 +71,7 @@ public class ChatController
 	
 	public String analyse(String twitterTopic)
 	{
-		String userAnalysis = "the Twitter topic" + twitterTopic + "has many tweets";
+		String userAnalysis = "the Twitter topic " + twitterTopic + " has many tweets";
 		
 		userAnalysis += chatTwitter.sampleInvestigation(twitterTopic);
 		
