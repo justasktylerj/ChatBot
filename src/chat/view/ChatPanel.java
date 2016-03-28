@@ -155,8 +155,8 @@ public class ChatPanel extends JPanel
 		 {
 			 public void actionPerformed(ActionEvent event)
 				{
-				 	String user = firstTextField.getText();
-				 	String results = baseController.analyse(user);
+				 	String question = firstTextField.getText();
+				 	String results = baseController.analyse(question);
 				 	chatArea.setText(results);
 				}
 		 });
