@@ -58,7 +58,6 @@ public class CTECTwitter
 		}
 		
 		tweetResults = "the top word in the tweets was " + wordList.get(topWordLocation) + " and it was used " + topCount + " times!";
-		
 		return tweetResults;
 	}
 	
@@ -172,20 +171,21 @@ public class CTECTwitter
 		return scrubbedString;
 	}
 
-	public String sampleInvestigation()
+	public String sampleInvestigation(String question)
 	{
 		String results = "";
-		Query query = new Query("marathon");
+		
+		Query query = new Query(question);
 		query.setCount(100); 
 		query.setGeoCode(new GeoLocation(40.587521, -111.869178), 5, Query.MILES);
 		query.setSince("2016-1-1");
 		try
 		{
 			QueryResult result = chatbotTwitter.search(query);
-			results.concat("count : " + result.getTweets().size());
+			results += "count : " + result.getTweets().size() + "\n";
 			for (Status tweet : result.getTweets())
 			{
-				results.concat("@" + tweet.getUser().getName() + ";" + tweet.getText() + "\n");
+				results += "@" + tweet.getUser().getName() + ";" + tweet.getText() + "\n";
 			}
 		}
 		catch (TwitterException error)

@@ -69,18 +69,11 @@ public class ChatController
 		chatTwitter.sendTweet(tweetText);
 	}
 	
-	public String analyse(String userName)
+	public String analyse(String twitterTopic)
 	{
-		String userAnalysis = "the Twitter user" + userName + "has many tweets";
-		try 
-		{
-			chatTwitter.loadTweets(userName);
-		}
-		catch (TwitterException error)
-		{
-			handleErrors(error.getErrorMessage());
-		}
-		userAnalysis += chatTwitter.topResults();
+		String userAnalysis = "the Twitter topic" + twitterTopic + "has many tweets";
+		
+		userAnalysis += chatTwitter.sampleInvestigation(twitterTopic);
 		
 		return userAnalysis;
 	}
