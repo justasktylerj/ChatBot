@@ -1,12 +1,16 @@
 package chat.view;
 
 import javax.swing.*;
+
 //imports
 import chat.controller.ChatController;
+import chat.controller.IOController;
+
 //pulls controller info
 import java.awt.Color;
 import java.awt.event.*;
 import java.awt.*;
+
 import chat.model.*;
 
 public class ChatPanel extends JPanel
@@ -158,6 +162,24 @@ public class ChatPanel extends JPanel
 				 	String question = firstTextField.getText();
 				 	String results = baseController.analyse(question);
 				 	chatArea.setText(results);
+				}
+		 });
+		 
+		 saveButton.addActionListener(new ActionListener()
+		 {
+			 public void actionPerformed(ActionEvent event)
+				{
+				 	String file = IOController.saveFile(chatArea.getText());
+				 	promptLabel.setText(file);
+				}
+		 });
+		 
+		 loadButton.addActionListener(new ActionListener()
+		 {
+			 public void actionPerformed(ActionEvent event)
+				{
+				 	String loadedText = IOController.readTextFromFile(promptLabel.getText());
+				 	chatArea.setText(loadedText);
 				}
 		 });
 		 
